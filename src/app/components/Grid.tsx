@@ -2,23 +2,23 @@ import React from "react";
 
 const Grid = () => {
   return (
-    <div className="flex justify-center">
-      <div className="grid">
+    <>
+      <div className="">
         <Square value={"X"} />
         <Square value={"X"} />
         <Square value={"X"} />
       </div>
-      <div className="grid">
+      <div className="">
         <Square value={"X"} />
         <Square value={"X"} />
         <Square value={"X"} />
       </div>
-      <div className="grid">
+      <div className="">
         <Square value={"X"} />
         <Square value={"X"} />
         <Square value={"X"} />
       </div>
-    </div>
+    </>
   );
 };
 
