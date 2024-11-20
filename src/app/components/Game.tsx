@@ -1,6 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
+interface GameProps {
+  children: ReactNode;
+}
 
-const Game = ({ children }: any) => {
+const Game = ({ children }: GameProps) => {
   return (
     <div className="flex w-80 items-center justify-center">{children}</div>
   );
