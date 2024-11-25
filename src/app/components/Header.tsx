@@ -2,12 +2,12 @@
 
 import React from "react";
 
-const Header = () => {
+const Header = ({ clearSquares }: RetryProps) => {
   return (
     <header className="flex gap-2 p-4">
       <Logo />
       <Turn />
-      <Retry clearSquares={() => console.log("squares cleared")} />
+      <Retry clearSquares={clearSquares} />
     </header>
   );
 };
