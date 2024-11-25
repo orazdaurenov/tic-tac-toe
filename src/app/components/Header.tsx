@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
+import { ValidValues } from "./Grid";
 
-const Header = ({ clearSquares }: RetryProps) => {
+const Header = ({ clearSquares, turn }: RetryProps & TurnProps) => {
   return (
     <header className="flex gap-2 p-4">
       <Logo />
-      <Turn />
+      <Turn turn={turn} />
       <Retry clearSquares={clearSquares} />
     </header>
   );
@@ -20,10 +21,21 @@ const Logo = () => {
   );
 };
 
-const Turn = () => {
+type TurnProps = {
+  turn: ValidValues;
+};
+
+const Turn = ({ turn }: TurnProps) => {
+  let nextTurn = " ";
+  if (turn === "X") {
+    nextTurn = "O";
+  } else {
+    nextTurn = "X";
+  }
+
   return (
     <>
-      <p>X TURN</p>
+      <p>{nextTurn} turn</p>
     </>
   );
 };
