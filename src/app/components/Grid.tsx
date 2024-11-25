@@ -5,9 +5,16 @@ import { string } from "zod";
 export type SquaresState = {
   squares: Array<ValidValues>;
   lastSquare: ValidValues;
+  setSquares: (input: Array<ValidValues>) => void;
+  setLastSquare: (input: ValidValues) => void;
 };
 
-const Grid = ({ squares, lastSquare }: SquaresState) => {
+const Grid = ({
+  squares,
+  lastSquare,
+  setSquares,
+  setLastSquare,
+}: SquaresState) => {
   function fillCell(Currinput: ValidValues) {
     if (Currinput === " ") {
       const nextSquare = lastSquare === "X" ? "O" : "X";

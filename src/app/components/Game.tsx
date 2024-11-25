@@ -43,7 +43,12 @@ const Game = () => {
     <div className="flex min-h-dvh flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center rounded border-2 border-solid border-lime-600 p-3">
         <Header />
-        <Grid squares={squares} lastSquare={lastSquare} />
+        <Grid
+          squares={squares}
+          lastSquare={lastSquare}
+          setSquares={setSquares}
+          setLastSquare={setLastSquare}
+        />
         <Results />
       </div>
     </div>
