@@ -1,27 +1,30 @@
 "use client";
 import React, { useState, type ReactNode } from "react";
+import { string } from "zod";
 
-const Grid = () => {
-  const defaultSquare: Array<ValidValues> = [
-    "X",
-    "X",
-    "X",
-    "X",
-    "X",
-    "X",
-    "X",
-    "X",
-    "X",
-  ];
-  const [squares, setSquares] = useState(defaultSquare);
-  function handleClick(i: number) {
+export type SquaresState = {
+  squares: Array<ValidValues>;
+  lastSquare: ValidValues;
+};
+
+const Grid = ({ squares, lastSquare }: SquaresState) => {
+  function fillCell(Currinput: ValidValues) {
+    if (Currinput === " ") {
+      const nextSquare = lastSquare === "X" ? "O" : "X";
+      setLastSquare(nextSquare);
+      return nextSquare;
+    }
+    return Currinput;
+  }
+  function handleClick(squareIndex: number) {
+    // [x,x,x,x,x]
+    // [x,x,o,x,x]
     const nextSquares = squares.map((square, index) => {
-      if (index === i) {
-        return "O";
+      if (index === squareIndex) {
+        return fillCell(square);
       }
       return square;
     });
-    console.log(squares[i]);
     setSquares(nextSquares);
   }
   return (
@@ -43,8 +46,8 @@ const Grid = () => {
 // ts funcitons have this pattern: funName(props:propsType):retrunType{}
 // default empty type is any
 // implicit retun type: whatever the fn retuns becomes its return type
-type ValidValues = "X" | " " | "O";
-interface SquareProps {
+export type ValidValues = "X" | " " | "O";
+export interface SquareProps {
   value: ValidValues;
   handleClick: () => void;
 }

@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 
 const Header = () => {
   return (
-    <header className="">
+    <header className="flex gap-2 p-4">
       <Logo />
       <Turn />
-      <Retry />
+      <Retry clearSquares={() => console.log("squares cleared")} />
     </header>
   );
 };
@@ -13,7 +15,7 @@ const Header = () => {
 const Logo = () => {
   return (
     <>
-      <img src="/imgX.svg" alt="" className="w-5" />
+      <img src="/imgX.svg" alt="" className="w-4" />
     </>
   );
 };
@@ -26,10 +28,14 @@ const Turn = () => {
   );
 };
 
-const Retry = () => {
+export type RetryProps = {
+  clearSquares: () => void;
+};
+
+const Retry = ({ clearSquares }: RetryProps) => {
   return (
     <>
-      <p>RETRY</p>
+      <button onClick={clearSquares}>RETRY</button>
     </>
   );
 };
