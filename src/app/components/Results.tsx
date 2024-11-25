@@ -1,6 +1,14 @@
 import React from "react";
 
-const Results = () => {
+type ResultProps = {
+  result: string | undefined;
+};
+
+const Results = ({ result }: ResultProps) => {
+  //player selection
+  //cpu logic
+  //tie caller
+  //then we can implement
   return (
     <div className="mt-5 flex gap-3">
       <div>you 0</div>

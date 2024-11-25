@@ -44,10 +44,11 @@ const Game = () => {
     ];
     for (let i = 0; i < allRowsAndCols.length; i++) {
       const wonStrg = allRowsAndCols[i];
-      if (wonStrg == Xwon) return "X won";
-      if (wonStrg == Owon) return "O won";
+      if (wonStrg == Xwon) return "X";
+      if (wonStrg == Owon) return "O";
     }
   };
+
   console.log(Winner());
   function changeIndex(replaceIndex: number, replace: string, arr: string[]) {
     //code below:
