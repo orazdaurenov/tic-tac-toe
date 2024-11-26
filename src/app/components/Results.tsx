@@ -4,7 +4,7 @@ type ResultProps = {
   result: string | undefined;
 };
 
-const Results = ({ result }: ResultProps) => {
+const Results = () => {
   //player selection
   //cpu logic
   //tie caller
