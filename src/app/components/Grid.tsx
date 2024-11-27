@@ -60,15 +60,19 @@ export interface SquareProps {
 }
 
 const Square = ({ value, handleClick }: SquareProps): ReactNode => {
+  let ImgJSX: string | ReactNode = " ";
+  if (value == "X") {
+    ImgJSX = <img src="/imgX.svg" />;
+  } else if (value == "O") {
+    ImgJSX = <img src="/ImgO.svg" alt="" />;
+  }
   return (
-    <>
-      <div
-        onClick={handleClick}
-        className="h-10 w-10 border-2 border-solid border-black"
-      >
-        {value}
-      </div>
-    </>
+    <div
+      onClick={handleClick}
+      className="bg-btn-color m-1 h-10 w-10 rounded-md border-none"
+    >
+      {ImgJSX}
+    </div>
   );
 };
 
