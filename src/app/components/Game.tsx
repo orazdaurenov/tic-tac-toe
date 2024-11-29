@@ -24,14 +24,15 @@ const Game = () => {
   const Winner = () => {
     const Xwon = "XXX";
     const Owon = "OOO";
-    const firstRow = squares[0] + squares[1] + squares[2];
-    const secondRow = squares[3] + squares[4] + squares[5];
-    const thirdRow = squares[6] + squares[7] + squares[8];
-    const firstColumn = squares[0] + squares[3] + squares[6];
-    const secondColumn = squares[1] + squares[4] + squares[7];
-    const thirdColumn = squares[2] + squares[5] + squares[8];
-    const leftDiagonal = squares[0] + squares[4] + squares[8];
-    const rightDiagonal = squares[2] + squares[4] + squares[6];
+    //in ts, the "!" tell ts to ignore undefined
+    const firstRow = squares[0]! + squares[1]! + squares[2]!;
+    const secondRow = squares[3]! + squares[4]! + squares[5]!;
+    const thirdRow = squares[6]! + squares[7]! + squares[8]!;
+    const firstColumn = squares[0]! + squares[3]! + squares[6]!;
+    const secondColumn = squares[1]! + squares[4]! + squares[7]!;
+    const thirdColumn = squares[2]! + squares[5]! + squares[8]!;
+    const leftDiagonal = squares[0]! + squares[4]! + squares[8]!;
+    const rightDiagonal = squares[2]! + squares[4]! + squares[6]!;
     const allRowsAndCols = [
       firstRow,
       secondRow,

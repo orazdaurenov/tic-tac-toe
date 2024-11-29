@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Frontend Mentor | Tic Tac Toe",
@@ -12,9 +13,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  //extra homework: add a home button that goes back to home "/" using the app icon
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="bg-main-bg text-text">{children}</body>
+      <body className="flex min-h-dvh flex-col items-center justify-center border-solid border-lime-500 bg-main-bg text-text">
+        <Link href="/">Home</Link>
+        {children}
+      </body>
     </html>
   );
 }
