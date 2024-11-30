@@ -4,6 +4,12 @@ import Header from "./Header";
 import Grid, { ValidValues } from "./Grid";
 import Results from "./Results";
 
+export type ResultObj = {
+  oplayer: number;
+  xplayer: number;
+  ties: number;
+};
+
 const Game = () => {
   const defaultSquare: Array<ValidValues> = [
     " ",
@@ -18,6 +24,11 @@ const Game = () => {
   ];
   const [squares, setSquares] = useState(defaultSquare);
   const [lastSquare, setLastSquare] = useState<ValidValues>(" ");
+  const [results, setResults] = useState<ResultObj>({
+    oplayer: 0,
+    xplayer: 0,
+    ties: 0,
+  });
 
   const outputArr: string[] = [];
 
@@ -79,7 +90,7 @@ const Game = () => {
           setSquares={setSquares}
           setLastSquare={setLastSquare}
         />
-        <Results />
+        <Results result={results} />
       </div>
     </div>
   );

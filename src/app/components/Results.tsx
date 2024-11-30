@@ -1,19 +1,19 @@
-import React from "react";
+import { ResultObj } from "./Game";
 
 type ResultProps = {
-  result: string | undefined;
+  result: ResultObj;
 };
 
-const Results = () => {
+const Results = ({ result }: ResultProps) => {
   //player selection
   //cpu logic
   //tie caller
   //then we can implement
   return (
     <div className="mt-5 flex gap-3">
-      <div>you 0</div>
-      <div>Ties 0</div>
-      <div>Computer 1</div>
+      <div>You {result.xplayer}</div>
+      <div>Ties {result.ties}</div>
+      <div>Computer {result.oplayer}</div>
     </div>
   );
 };
