@@ -30,20 +30,36 @@ const Game = () => {
     ties: 0,
   });
 
+  // on square click --> only grid has access to event handler
+  // check for a winner --> this function needs to have acess to squares, setResults, and getWinner
+  // if winner, set the winner --> setReults
+
+  // make a function that takes getWinner
+
+  const defineWinner = (nextSquares: ValidValues[]) => {
+    let winner = getWinner(nextSquares);
+    if (winner === "X") {
+      const nextResults = { ...results, xplayer: results.xplayer + 1 };
+      setResults(nextResults);
+    } else if (winner === "O") {
+      const nextResults = { ...results, oplayer: (results.oplayer = 1) };
+    }
+  };
+
   const outputArr: string[] = [];
 
-  const Winner = () => {
+  const getWinner = (nextSquares: ValidValues[]) => {
     const Xwon = "XXX";
     const Owon = "OOO";
     //in ts, the "!" tell ts to ignore undefined
-    const firstRow = squares[0]! + squares[1]! + squares[2]!;
-    const secondRow = squares[3]! + squares[4]! + squares[5]!;
-    const thirdRow = squares[6]! + squares[7]! + squares[8]!;
-    const firstColumn = squares[0]! + squares[3]! + squares[6]!;
-    const secondColumn = squares[1]! + squares[4]! + squares[7]!;
-    const thirdColumn = squares[2]! + squares[5]! + squares[8]!;
-    const leftDiagonal = squares[0]! + squares[4]! + squares[8]!;
-    const rightDiagonal = squares[2]! + squares[4]! + squares[6]!;
+    const firstRow = nextSquares[0]! + nextSquares[1]! + nextSquares[2]!;
+    const secondRow = nextSquares[3]! + nextSquares[4]! + nextSquares[5]!;
+    const thirdRow = nextSquares[6]! + nextSquares[7]! + nextSquares[8]!;
+    const firstColumn = nextSquares[0]! + nextSquares[3]! + nextSquares[6]!;
+    const secondColumn = nextSquares[1]! + nextSquares[4]! + nextSquares[7]!;
+    const thirdColumn = nextSquares[2]! + nextSquares[5]! + nextSquares[8]!;
+    const leftDiagonal = nextSquares[0]! + nextSquares[4]! + nextSquares[8]!;
+    const rightDiagonal = nextSquares[2]! + nextSquares[4]! + nextSquares[6]!;
     const allRowsAndCols = [
       firstRow,
       secondRow,
@@ -61,7 +77,6 @@ const Game = () => {
     }
   };
 
-  console.log(Winner());
   function changeIndex(replaceIndex: number, replace: string, arr: string[]) {
     //code below:
     for (let i = 0; i <= arr.length - 1; i++) {
@@ -85,6 +100,7 @@ const Game = () => {
           turn={lastSquare}
         />
         <Grid
+          defineWinner={defineWinner}
           squares={squares}
           lastSquare={lastSquare}
           setSquares={setSquares}

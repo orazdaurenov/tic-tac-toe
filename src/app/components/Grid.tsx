@@ -5,11 +5,13 @@ import { string } from "zod";
 export type SquaresState = {
   squares: Array<ValidValues>;
   lastSquare: ValidValues;
+  defineWinner: (input: Array<ValidValues>) => void;
   setSquares: (input: Array<ValidValues>) => void;
   setLastSquare: (input: ValidValues) => void;
 };
 
 const Grid = ({
+  defineWinner,
   squares,
   lastSquare,
   setSquares,
@@ -32,7 +34,10 @@ const Grid = ({
       }
       return square;
     });
+    defineWinner(nextSquares);
     setSquares(nextSquares);
+    console.log("squares", squares);
+    console.log("next squeares", nextSquares);
   }
   return (
     <>
@@ -69,7 +74,7 @@ const Square = ({ value, handleClick }: SquareProps): ReactNode => {
   return (
     <div
       onClick={handleClick}
-      className="bg-btn-color m-1 h-10 w-10 rounded-md border-none"
+      className="m-1 h-10 w-10 rounded-md border-none bg-btn-color"
     >
       {ImgJSX}
     </div>
