@@ -36,8 +36,6 @@ const Grid = ({
     });
     defineWinner(nextSquares);
     setSquares(nextSquares);
-    console.log("squares", squares);
-    console.log("next squeares", nextSquares);
   }
   return (
     <>

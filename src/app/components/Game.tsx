@@ -30,52 +30,41 @@ const Game = () => {
     ties: 0,
   });
 
-  // on square click --> only grid has access to event handler
-  // check for a winner --> this function needs to have acess to squares, setResults, and getWinner
-  // if winner, set the winner --> setReults
-
-  // make a function that takes getWinner
+  const defineTies = (nextSquares: ValidValues[]) => {
+    //pattern: variable mutation
+    //start with a default
+    //change on logic
+    //return the variable
+    let isTie = true;
+    for (let i = 0; i <= nextSquares.length; i++) {
+      const currentSquare = nextSquares[i];
+      //always check for winner before checking for tie
+      if (currentSquare === " ") {
+        isTie = false;
+      }
+    }
+    return isTie;
+  };
 
   const defineWinner = (nextSquares: ValidValues[]) => {
     let winner = getWinner(nextSquares);
     if (winner === "X") {
       const nextResults = { ...results, xplayer: results.xplayer + 1 };
       setResults(nextResults);
+      console.log("X won");
     } else if (winner === "O") {
       const nextResults = { ...results, oplayer: (results.oplayer = 1) };
+      setResults(nextResults);
+      console.log("O won");
+    } else if (defineTies(nextSquares)) {
+      const nextResults = { ...results, ties: results.ties + 1 };
+      setResults(nextResults);
+      console.log("Ties");
+      //only runs after checking winner
     }
   };
 
   const outputArr: string[] = [];
-
-  const getWinner = (nextSquares: ValidValues[]) => {
-    const Xwon = "XXX";
-    const Owon = "OOO";
-    //in ts, the "!" tell ts to ignore undefined
-    const firstRow = nextSquares[0]! + nextSquares[1]! + nextSquares[2]!;
-    const secondRow = nextSquares[3]! + nextSquares[4]! + nextSquares[5]!;
-    const thirdRow = nextSquares[6]! + nextSquares[7]! + nextSquares[8]!;
-    const firstColumn = nextSquares[0]! + nextSquares[3]! + nextSquares[6]!;
-    const secondColumn = nextSquares[1]! + nextSquares[4]! + nextSquares[7]!;
-    const thirdColumn = nextSquares[2]! + nextSquares[5]! + nextSquares[8]!;
-    const leftDiagonal = nextSquares[0]! + nextSquares[4]! + nextSquares[8]!;
-    const rightDiagonal = nextSquares[2]! + nextSquares[4]! + nextSquares[6]!;
-    const allRowsAndCols = [
-      firstRow,
-      secondRow,
-      thirdRow,
-      firstColumn,
-      secondColumn,
-      thirdColumn,
-      leftDiagonal,
-      rightDiagonal,
-    ];
-    for (let i = 0; i < allRowsAndCols.length; i++) {
-      const wonStrg = allRowsAndCols[i];
-      if (wonStrg == Xwon) return "X";
-      if (wonStrg == Owon) return "O";
-    }
-  };
 
   function changeIndex(replaceIndex: number, replace: string, arr: string[]) {
     //code below:
@@ -110,6 +99,35 @@ const Game = () => {
       </div>
     </div>
   );
+};
+
+const getWinner = (nextSquares: ValidValues[]) => {
+  const Xwon = "XXX";
+  const Owon = "OOO";
+  //in ts, the "!" tell ts to ignore undefined
+  const firstRow = nextSquares[0]! + nextSquares[1]! + nextSquares[2]!;
+  const secondRow = nextSquares[3]! + nextSquares[4]! + nextSquares[5]!;
+  const thirdRow = nextSquares[6]! + nextSquares[7]! + nextSquares[8]!;
+  const firstColumn = nextSquares[0]! + nextSquares[3]! + nextSquares[6]!;
+  const secondColumn = nextSquares[1]! + nextSquares[4]! + nextSquares[7]!;
+  const thirdColumn = nextSquares[2]! + nextSquares[5]! + nextSquares[8]!;
+  const leftDiagonal = nextSquares[0]! + nextSquares[4]! + nextSquares[8]!;
+  const rightDiagonal = nextSquares[2]! + nextSquares[4]! + nextSquares[6]!;
+  const allRowsAndCols = [
+    firstRow,
+    secondRow,
+    thirdRow,
+    firstColumn,
+    secondColumn,
+    thirdColumn,
+    leftDiagonal,
+    rightDiagonal,
+  ];
+  for (let i = 0; i < allRowsAndCols.length; i++) {
+    const wonStrg = allRowsAndCols[i];
+    if (wonStrg == Xwon) return "X";
+    if (wonStrg == Owon) return "O";
+  }
 };
 
 export default Game;
