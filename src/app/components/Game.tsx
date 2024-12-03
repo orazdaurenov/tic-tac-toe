@@ -44,7 +44,7 @@ const Game = () => {
       setResults(nextResults);
       console.log("X won");
     } else if (winner === "O") {
-      const nextResults = { ...results, oplayer: (results.oplayer = 1) };
+      const nextResults = { ...results, oplayer: results.oplayer + 1 };
       setResults(nextResults);
       console.log("O won");
     } else if (defineTies(nextSquares)) {
