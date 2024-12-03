@@ -31,11 +31,13 @@ const Game = () => {
   });
 
   const defineTies = (nextSquares: ValidValues[]): boolean => {
-    return nextSquares.some((square) => {
+    // if there's no empty cells, call it a tie
+    return !nextSquares.some((square) => {
       return square === " ";
     });
   };
   const defineWinner = (nextSquares: ValidValues[]) => {
+    console.log(nextSquares);
     let winner = getWinner(nextSquares);
     if (winner === "X") {
       const nextResults = { ...results, xplayer: results.xplayer + 1 };
