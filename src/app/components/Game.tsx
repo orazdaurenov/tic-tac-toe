@@ -29,6 +29,7 @@ const Game = () => {
     xplayer: 0,
     ties: 0,
   });
+  const [allowPlay, setAllowPlay] = useState(true);
 
   const defineTies = (nextSquares: ValidValues[]): boolean => {
     // if there's no empty cells, call it a tie
@@ -42,14 +43,17 @@ const Game = () => {
     if (winner === "X") {
       const nextResults = { ...results, xplayer: results.xplayer + 1 };
       setResults(nextResults);
+      setAllowPlay(false);
       console.log("X won");
     } else if (winner === "O") {
       const nextResults = { ...results, oplayer: results.oplayer + 1 };
       setResults(nextResults);
+      setAllowPlay(false);
       console.log("O won");
     } else if (defineTies(nextSquares)) {
       const nextResults = { ...results, ties: results.ties + 1 };
       setResults(nextResults);
+      setAllowPlay(false);
       console.log("Ties");
       //only runs after checking winner
     }
@@ -80,6 +84,7 @@ const Game = () => {
           turn={lastSquare}
         />
         <Grid
+          allowplay={allowPlay}
           defineWinner={defineWinner}
           squares={squares}
           lastSquare={lastSquare}

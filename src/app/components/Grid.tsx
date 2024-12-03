@@ -5,6 +5,7 @@ import { string } from "zod";
 export type SquaresState = {
   squares: Array<ValidValues>;
   lastSquare: ValidValues;
+  allowplay: boolean;
   defineWinner: (input: Array<ValidValues>) => void;
   setSquares: (input: Array<ValidValues>) => void;
   setLastSquare: (input: ValidValues) => void;
@@ -12,6 +13,7 @@ export type SquaresState = {
 
 const Grid = ({
   defineWinner,
+  allowplay,
   squares,
   lastSquare,
   setSquares,
@@ -28,14 +30,16 @@ const Grid = ({
   function handleClick(squareIndex: number) {
     // [x,x,x,x,x]
     // [x,x,o,x,x]
-    const nextSquares = squares.map((square, index) => {
-      if (index === squareIndex) {
-        return fillCell(square);
-      }
-      return square;
-    });
-    defineWinner(nextSquares);
-    setSquares(nextSquares);
+    if (allowplay) {
+      const nextSquares = squares.map((square, index) => {
+        if (index === squareIndex) {
+          return fillCell(square);
+        }
+        return square;
+      });
+      defineWinner(nextSquares);
+      setSquares(nextSquares);
+    }
   }
   return (
     <>
