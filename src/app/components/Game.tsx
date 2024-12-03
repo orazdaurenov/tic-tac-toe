@@ -30,22 +30,11 @@ const Game = () => {
     ties: 0,
   });
 
-  const defineTies = (nextSquares: ValidValues[]) => {
-    //pattern: variable mutation
-    //start with a default
-    //change on logic
-    //return the variable
-    let isTie = true;
-    for (let i = 0; i <= nextSquares.length; i++) {
-      const currentSquare = nextSquares[i];
-      //always check for winner before checking for tie
-      if (currentSquare === " ") {
-        isTie = false;
-      }
-    }
-    return isTie;
+  const defineTies = (nextSquares: ValidValues[]): boolean => {
+    return nextSquares.some((square) => {
+      return square === " ";
+    });
   };
-
   const defineWinner = (nextSquares: ValidValues[]) => {
     let winner = getWinner(nextSquares);
     if (winner === "X") {
