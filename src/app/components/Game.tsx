@@ -39,7 +39,7 @@ const Game = () => {
   };
   const defineWinner = (nextSquares: ValidValues[]) => {
     console.log(nextSquares);
-    let winner = getWinner(nextSquares);
+    const winner = getWinner(nextSquares);
     if (winner === "X") {
       const nextResults = { ...results, xplayer: results.xplayer + 1 };
       setResults(nextResults);
@@ -64,7 +64,7 @@ const Game = () => {
   function changeIndex(replaceIndex: number, replace: string, arr: string[]) {
     //code below:
     for (let i = 0; i <= arr.length - 1; i++) {
-      const currentElement = arr[i] as string;
+      const currentElement = arr[i]!;
       //give a console.log that says "last loop" when its the last loop
 
       if (i === replaceIndex) {
@@ -119,8 +119,7 @@ const getWinner = (nextSquares: ValidValues[]) => {
     leftDiagonal,
     rightDiagonal,
   ];
-  for (let i = 0; i < allRowsAndCols.length; i++) {
-    const wonStrg = allRowsAndCols[i];
+  for (const wonStrg of allRowsAndCols) {
     if (wonStrg == Xwon) return "X";
     if (wonStrg == Owon) return "O";
   }
