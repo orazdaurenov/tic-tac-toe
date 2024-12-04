@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Game from "./components/Game";
-
 // File based routing is the idea that each file maps to an URL
 // localhost/games -> dir called games, inside the directory you will have a page.tsx
 // next will the url, serving the page.tsx file

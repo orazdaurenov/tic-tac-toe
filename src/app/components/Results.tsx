@@ -1,4 +1,4 @@
-import { ResultObj } from "./Game";
+import { type ResultObj } from "./Game";
 
 type ResultProps = {
   result: ResultObj;

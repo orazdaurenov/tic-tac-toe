@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ValidValues } from "./Grid";
+import { type ValidValues } from "./Grid";
 
 const Header = ({ clearSquares, turn }: RetryProps & TurnProps) => {
   return (
@@ -16,7 +16,7 @@ const Header = ({ clearSquares, turn }: RetryProps & TurnProps) => {
 const Logo = () => {
   return (
     <>
-      <img src="/imgX.svg" alt="" className="w-4" />
+      <img src="/imgX.svg" alt="ImageX" className="w-4" />
     </>
   );
 };

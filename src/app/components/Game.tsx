@@ -1,7 +1,7 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
-import Grid, { ValidValues } from "./Grid";
+import Grid, { type ValidValues } from "./Grid";
 import Results from "./Results";
 
 export type ResultObj = {
@@ -58,23 +58,6 @@ const Game = () => {
       //only runs after checking winner
     }
   };
-
-  const outputArr: string[] = [];
-
-  function changeIndex(replaceIndex: number, replace: string, arr: string[]) {
-    //code below:
-    for (let i = 0; i <= arr.length - 1; i++) {
-      const currentElement = arr[i]!;
-      //give a console.log that says "last loop" when its the last loop
-
-      if (i === replaceIndex) {
-        console.log("last loop");
-        outputArr.push("O");
-      } else outputArr.push(currentElement);
-    }
-  }
-
-  console.log("RESULTS: ", outputArr);
 
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center">

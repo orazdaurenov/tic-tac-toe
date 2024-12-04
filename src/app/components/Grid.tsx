@@ -1,6 +1,5 @@
 "use client";
-import React, { useState, type ReactNode } from "react";
-import { string } from "zod";
+import React, { type ReactNode } from "react";
 
 export type SquaresState = {
   squares: Array<ValidValues>;
@@ -69,9 +68,9 @@ export interface SquareProps {
 const Square = ({ value, handleClick }: SquareProps): ReactNode => {
   let ImgJSX: string | ReactNode = " ";
   if (value == "X") {
-    ImgJSX = <img src="/imgX.svg" />;
+    ImgJSX = <img src="/imgX.svg" alt="ImageX" />;
   } else if (value == "O") {
-    ImgJSX = <img src="/ImgO.svg" alt="" />;
+    ImgJSX = <img src="/ImgO.svg" alt="ImageO" />;
   }
   return (
     <div
