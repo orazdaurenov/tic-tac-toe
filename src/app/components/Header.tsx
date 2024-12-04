@@ -3,12 +3,12 @@
 import React from "react";
 import { type ValidValues } from "./Grid";
 
-const Header = ({ clearSquares, turn }: RetryProps & TurnProps) => {
+const Header = ({ resetGame, turn }: RetryProps & TurnProps) => {
   return (
     <header className="flex gap-2 p-4">
       <Logo />
       <Turn turn={turn} />
-      <Retry clearSquares={clearSquares} />
+      <Retry resetGame={resetGame} />
     </header>
   );
 };
@@ -41,13 +41,19 @@ const Turn = ({ turn }: TurnProps) => {
 };
 
 export type RetryProps = {
-  clearSquares: () => void;
+  resetGame: () => void;
 };
 
-const Retry = ({ clearSquares }: RetryProps) => {
+const Retry = ({ resetGame }: RetryProps) => {
   return (
     <>
-      <button onClick={clearSquares}>RETRY</button>
+      <button
+        onClick={() => {
+          resetGame();
+        }}
+      >
+        RETRY
+      </button>
     </>
   );
 };

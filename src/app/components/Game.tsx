@@ -37,24 +37,26 @@ const Game = () => {
       return square === " ";
     });
   };
+
+  const resetGame = () => {
+    setAllowPlay(true);
+    setSquares(defaultSquare);
+  };
+
   const defineWinner = (nextSquares: ValidValues[]) => {
-    console.log(nextSquares);
     const winner = getWinner(nextSquares);
     if (winner === "X") {
       const nextResults = { ...results, xplayer: results.xplayer + 1 };
       setResults(nextResults);
       setAllowPlay(false);
-      console.log("X won");
     } else if (winner === "O") {
       const nextResults = { ...results, oplayer: results.oplayer + 1 };
       setResults(nextResults);
       setAllowPlay(false);
-      console.log("O won");
     } else if (defineTies(nextSquares)) {
       const nextResults = { ...results, ties: results.ties + 1 };
       setResults(nextResults);
       setAllowPlay(false);
-      console.log("Ties");
       //only runs after checking winner
     }
   };
@@ -62,10 +64,7 @@ const Game = () => {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center rounded border-2 border-solid border-lime-600 p-3">
-        <Header
-          clearSquares={() => setSquares(defaultSquare)}
-          turn={lastSquare}
-        />
+        <Header resetGame={() => resetGame()} turn={lastSquare} />
         <Grid
           allowplay={allowPlay}
           defineWinner={defineWinner}

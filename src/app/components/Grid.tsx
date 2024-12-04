@@ -27,8 +27,6 @@ const Grid = ({
     return Currinput;
   }
   function handleClick(squareIndex: number) {
-    // [x,x,x,x,x]
-    // [x,x,o,x,x]
     if (allowplay) {
       const nextSquares = squares.map((square, index) => {
         if (index === squareIndex) {
